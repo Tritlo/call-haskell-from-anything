@@ -21,6 +21,7 @@ module FFI.Anything.TypeUncurry.Msgpack (
   MessagePackRec (..)
 , getTypeListFromMsgpackArray
 , uncurryMsgpack
+, uncurryMsgpackIO
 , tryUncurryMsgpack
 , tryUncurryMsgpackIO
 , byteStringToCStringFun
