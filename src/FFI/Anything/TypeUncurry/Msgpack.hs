@@ -123,7 +123,7 @@ tryUncurryMsgpackIO f = \bs -> case MSG.unpack $ BSL.fromStrict bs of
 -- You need to free() the returned string when you're done with it.
 byteStringToMallocedCStringWith64bitLength :: ByteString -> IO CString
 byteStringToMallocedCStringWith64bitLength bs =
-  unsafeUseAsCStringLen bs $ \(ptr, len) -> do
+  BS.useAsCStringLen bs $ \(ptr, len) -> do
     targetPtr <- mallocBytes (8 + len)
     pokeBE (castPtr targetPtr) (fromIntegral len :: Int64)
     copyBytes (targetPtr `plusPtr` 8) ptr len
